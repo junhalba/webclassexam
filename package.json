@@ -1,0 +1,43 @@
+{
+  "name": "deeplens-web",
+  "version": "1.0.0",
+  "description": "AWS DeppLens porject web",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigoAGM/deeplens-web.git"
+  },
+  "keywords": [
+    "deeplens",
+    "aws",
+    "nodejs",
+    "node",
+    "expressjs",
+    "exprees",
+    "dynamodb"
+  ],
+  "author": "RodrigoAGM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodrigoAGM/deeplens-web/issues"
+  },
+  "homepage": "https://github.com/RodrigoAGM/deeplens-web#readme",
+  "dependencies": {
+    "amazon-cognito-identity-js": "^4.3.2",
+    "amazon-cognito-identity-js-node": "0.0.3",
+    "aws-sdk": "^2.703.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "expressjs": "^1.0.1",
+    "handbrake-js": "^4.0.3",
+    "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.4",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {}
+}
