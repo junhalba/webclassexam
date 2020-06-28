@@ -730,6 +730,14 @@ a.dt-button.active:not(.disabled) {
   width: 250px;
   transition: width 300ms ease-in-out;
 }
+.logoreduct {
+  /*background: #03A9F5;*/
+  display: inline-block;
+  padding: 8px 0px;
+  text-align: center;
+  width: 70px;
+  transition: width 300ms ease-in-out;
+}
 .logo span {
   color: #252525;
   font-size: 16px;
