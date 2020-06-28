@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login y Registro con HTML5 y CSS3</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/images/Login-Logo.png" type="image/x-icon">
-  <link href="assets/css/styleLoginEC.css" rel="stylesheet">
+  
+
+  <!--JQUERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <!-- Los iconos tipo Solid de Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Nuestro css-->
+  <link rel="stylesheet" type="text/css" href="assets/css/styleLoginEC2.css" th:href="@{/css/styleLoginEC2.css}">
 </head>
 <body>
-  <main>
-      <article>
-          <section>
-              <form action="/login" method="POST">                  
-                  <p><img src="assets/images/LogoCE.png" alt=""/></p>
-                  <h1>Inicia Sesion</h1>
-                  <input type="email" id="email" name="email" required placeholder="Correo electr&oacute;nico"><br/>
-                  <input type="password" id="password" name="password" required placeholder="Contrase&ntilde;a"><br/>
-                  <button type="submit">Entrar</button>
-                  <button type="reset">Limpiar</button> 
-                  <p> </p>
-                  <p> </p>
-                  <p> </p>
-                  <p> </p>
-              </form>
-          </section>
-      </article>
-  </main>
+ 
+  <div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="assets/img/user.png" th:src="@{/img/user.png}"/>                  
+            </div>
+            <div class="col-12 user-imglogo">
+              <img src="assets/img/logo2.png" th:src="@{/img/logo2.png}"/>                  
+            </div>
+            
+            <form class="col-12" action="/login" method="POST">
+                <div class="form-group" id="user-group">
+                    <input type="email" id="email" required class="form-control" placeholder="Correo electr&oacute;nico" name="email"/>
+                </div>
+                <div class="form-group" id="contrasena-group">
+                    <input type="password" id="password" required class="form-control" placeholder="Contrasena" name="password"/>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Ingresar</button>
+                <button type="reset" class="btn btn-warning"><i class="fas fa-trash"></i>Limpiar</button>
+            </form>
+            <% if(logged == 2) { %>
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+              <strong>Usuario y contraseña invalidos.</strong>              
+            </div>            
+            <% } %>
+            <% if( logout == 1) { %>
+            <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                <strong>Has cerrado la sesión.</strong>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
   
 </body>
 

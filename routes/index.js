@@ -18,34 +18,42 @@ const poolData = {
 const pool_region = cognito.region; //Your region here
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-var logged = false;
+var logged = 0;
+var logout = 0;
 
 router.get('/', function(req, res, next) {  
 
-  if(logged)
-    res.render('video');
+  if(logged == 1)
+    res.render('video', {logged:logged, logout:logout});
   else  
-  res.redirect('/login');
+    res.redirect('/login');
+      
 });
 
 router.get('/login', function(req, res, next){
-  if(logged)    
+  if(logged == 1)    
     res.redirect('/');
+  else if (logged == 2)
+  {
+    res.render('login', {logged:logged, logout:0});
+  }
   else
-    res.render('login');
+    res.render('login', {logged:logged, logout:logout});
+  
 })
 
 router.get('/logout', function(req, res, next){
   var cognitoUser = userPool.getCurrentUser();
   if (cognitoUser != null) {
       cognitoUser.signOut();
-      logged = false;
+      logged = 0;
+      logout = 1;
       res.redirect('/login');
   }
 })
 
 router.post('/login', function(req, res, next){
-  if (logged) {
+  if (logged == 1) {
     res.redirect('/');
   } else {    
       var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
@@ -64,11 +72,13 @@ router.post('/login', function(req, res, next){
               // console.log('access token + ' + result.getAccessToken().getJwtToken());
               // console.log('id token + ' + result.getIdToken().getJwtToken());
               // console.log('refresh token + ' + result.getRefreshToken().getToken());
-              logged = true;
+              console.log(result);
+              logged = 1;
               res.redirect('/notifications');
           },
           onFailure: function(err) {
               console.log(err);
+              logged = 2;
               res.redirect('/login');
           },
       });
@@ -76,7 +86,7 @@ router.post('/login', function(req, res, next){
 })
 
 router.get('/notifications', function(req, res, next) {
-  if(logged)
+  if(logged == 1)
   {
     url = 'https://tgmdpuq1ai.execute-api.us-east-1.amazonaws.com/crud/alertnotifications';
 
@@ -91,25 +101,25 @@ router.get('/notifications', function(req, res, next) {
       //     return x > y ? -1 : x < y ? 1 : 0;
       // });
 
-      res.render('notifications', {notificationList : notificationList});
+      res.render('notifications', {notificationList : notificationList , logged:logged, logout:logout});
     });    
   }
   else
     res.redirect('login');
-  
+   
 });
 
 router.get('/information', function(req, res, next) {
-  if(logged)    
-    res.render('information');
+  if(logged == 1)    
+    res.render('information', {logged:logged,logout:logout});
   else
     res.redirect('login');
   
 });
 
 router.get('/:filename', function(req, res) {
-  if(logged)    
-    res.render('notification_video');
+  if(logged == 1)    
+    res.render('notification_video', {logged:logged,logout:logout});
   else
     res.redirect('login')
 });
