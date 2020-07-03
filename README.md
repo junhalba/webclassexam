@@ -17,12 +17,12 @@ v8.11.3
 
 After that, you should download a copy of the project to start running it. To do so, go to your git bash and do
 ```
-git clone https://github.com/RodrigoAGM/deeplens-web.git
+git clone https://github.com/junhalba/webclassexam.git
 ```
 
 Then go to the cloned folder and you are ready!
 ```
-cd deeplens-web
+cd webclassexam
 ```
 
 ### Run the project
