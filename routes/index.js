@@ -20,6 +20,7 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 var logged = 0;
 var logout = 0;
+var errormsg = 0;
 
 router.get('/', function(req, res, next) {  
 
@@ -35,10 +36,10 @@ router.get('/login', function(req, res, next){
     res.redirect('/');
   else if (logged == 2)
   {
-    res.render('login', {logged:logged, logout:0});
+    res.render('login', {logged:logged, logout:0, errormsg:errormsg});
   }
   else
-    res.render('login', {logged:logged, logout:logout});
+    res.render('login', {logged:logged, logout:logout, errormsg:errormsg});
   
 })
 
@@ -77,6 +78,13 @@ router.post('/login', function(req, res, next){
               res.redirect('/notifications');
           },
           onFailure: function(err) {
+              if (err.message == 'User is not confirmed.')
+              {
+                errormsg = 1;
+              }
+              else {
+                errormsg = 0;
+              }
               console.log(err);
               logged = 2;
               res.redirect('/login');

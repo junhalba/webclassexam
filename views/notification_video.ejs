@@ -37,8 +37,9 @@
 
     <script>
          function VideoSource(){
-            path = document.URL;
-            path = path.substr(22, path.length);
+            //path = document.URL;
+            path = window.location.pathname;
+            path = path.substr(1, path.length);
             var videoPath = 'http://d3l4yaeq66e8uy.cloudfront.net/' + path;
             var videoId = document.getElementById('videoPath');
             videoId.src = videoPath.toString();

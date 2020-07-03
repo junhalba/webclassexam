@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/RodrigoAGM/deeplens-web#readme",
   "dependencies": {
+    "alertifyjs": "^1.13.1",
     "amazon-cognito-identity-js": "^4.3.2",
     "amazon-cognito-identity-js-node": "0.0.3",
     "aws-sdk": "^2.703.0",
