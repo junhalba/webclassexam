@@ -31,7 +31,7 @@
     "amazon-cognito-identity-js-node": "0.0.3",
     "aws-sdk": "^2.703.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "expressjs": "^1.0.1",
     "handbrake-js": "^4.0.3",
     "jquery": "^3.5.1",
